@@ -1,0 +1,101 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+body, body .container .clock, body .container .clock .circle, body .container .clock .back, body .container .clock .hands {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #141212;
+  color: antiquewhite;
+  font-size: 20px; }
+
+body {
+  height: 100vh;
+  counter-reset: digit 0; }
+  body .container {
+    position: relative; }
+    body .container .clock {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%; }
+      body .container .clock .circle {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 1px solid wheat;
+        background: linear-gradient(145deg, #00ffbf, #5de24b, #ff0);
+        box-shadow: 0 0 5px, 0 0 15px #00ffbf ,0 0 17px 2px #5de24b,0 0 20px 5px #ff0;
+        animation: back 1.5s linear infinite;
+        position: absolute; }
+      body .container .clock .back {
+        background-color: #191919;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        position: absolute; }
+      body .container .clock span {
+        position: absolute;
+        transform: rotate(calc(30deg * var(--i)));
+        inset: 10px;
+        text-align: center; }
+        body .container .clock span::before {
+          content: "" counter(digit,upper-roman);
+          counter-increment: digit 1; }
+        body .container .clock span b {
+          transform: rotate(calc(-30deg * var(--i)));
+          display: inline-block; }
+      body .container .clock::before {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        border: 1px solid wheat;
+        border-radius: 50%;
+        background-color: wheat;
+        z-index: 2; }
+      body .container .clock .hands div {
+        position: absolute; }
+      body .container .clock .hands .hr {
+        top: 78px;
+        width: 15px;
+        height: 80px;
+        background-color: #188d0e;
+        border: 1px solid #188d0e;
+        border-radius: 10px;
+        animation: hr 86400s linear infinite;
+        transform-origin: 50% 92%; }
+@keyframes hr {
+  to {
+    transform: rotate(360deg); } }
+      body .container .clock .hands .min {
+        top: 58px;
+        width: 10px;
+        height: 98px;
+        background-color: #ebe865;
+        border: 1px solid #ebe865;
+        border-radius: 10px;
+        animation: min 3600s linear infinite;
+        transform-origin: 50% 95%; }
+@keyframes min {
+  to {
+    transform: rotate(360deg); } }
+      body .container .clock .hands .sec {
+        top: 42px;
+        width: 5px;
+        height: 125px;
+        background-color: #f15636;
+        border: 1px solid #f15636;
+        border-radius: 10px;
+        animation: sec 60s linear infinite;
+        transform-origin: 50% 87%; }
+@keyframes sec {
+  to {
+    transform: rotate(360deg); } }
+@keyframes back {
+  100% {
+    filter: hue-rotate(360deg); } }
+
+/*# sourceMappingURL=style.css.map */
